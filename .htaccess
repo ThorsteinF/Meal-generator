@@ -1,0 +1,23 @@
+RewriteEngine On
+
+# Remove .php extension
+RewriteCond %{REQUEST_FILENAME}.php -f
+RewriteRule ^(.*)$ $1.php  [NC,L]
+
+# 400 page
+ErrorDocument 400 /400.php
+
+# 401 page
+ErrorDocument 401 /401.php
+
+# 403 page
+ErrorDocument 403 /403.php
+
+# 404 page
+ErrorDocument 404 /404.php
+
+# 500 page
+ErrorDocument 500 /500.php
+
+# Disabling index browsing
+Options -Indexes

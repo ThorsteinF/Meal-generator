@@ -2,7 +2,7 @@
 session_start();
 
 if (!empty($_SESSION["username"])) {
-  header("location: index.php");
+  header("location: ../dinnergenerator");
 };
 
 if (isset($_POST["submit"])) {
@@ -14,7 +14,7 @@ if (isset($_POST["submit"])) {
   $pwd = $_POST["pwd"];
 
   loginUser($conn, $username, $pwd);
-  header("location: index.php");
+  header("location: ../dinnergenerator");
 }
 ?>
 
@@ -32,26 +32,23 @@ if (isset($_POST["submit"])) {
 <body>
   <header>
     <a href='../'><button>BACK</button></a>
-    <a href="index.php"><button>HOME</button></a>
+    <a href="../dinnergenerator"><button>HOME</button></a>
     <?php
     if (isset($_SESSION["userid"])) {
-      echo "<a href = 'savedmeals.php'><button>SAVED MEALS</button></a>";
-      echo "<a href = 'profile.php'><button>PROFILE</button></a>";
-      if ($_SESSION["username"] == "admin") {
-        echo "<a href = 'controlpanel.php'><button>CONTROL PANEL</button></a>";
-      }
-      echo "<a href = 'logout.php'><button>LOG OUT</button></a>";
+      echo "<a href = 'savedmeals'><button>SAVED MEALS</button></a>";
+      echo "<a href = 'profile'><button>PROFILE</button></a>";
+      echo "<a href = 'logout'><button>LOG OUT</button></a>";
     } else {
-      echo "<a href = 'login.php'><button>LOGIN</button></a>";
-      echo "<a href = 'signup.php'><button>REGISTER</button></a>";
+      echo "<a href = 'login'><button>LOGIN</button></a>";
+      echo "<a href = 'signup'><button>REGISTER</button></a>";
     }
     ?>
-    <a href="privacypolicy.php"><button>PRIVACY POLICY</button></a>
+    <a href="privacypolicy"><button>PRIVACY POLICY</button></a>
   </header>
   <br>
   <br>
   <div id="main">
-    <form action="login.php" method="POST">
+    <form action="login" method="POST">
       <h1> Log in </h1>
       <input type="text" name="username" placeholder="Username/Email" id="inputUid">
       <br>

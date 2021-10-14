@@ -2,14 +2,14 @@
 session_start();
 
 if (!isset($_SESSION['userid'])) {
-  header("location: login");
+  header("location: login.php");
 } else if (isset($_GET["mealid"])) {
   include_once "scripts/connect.php";
 
   $sql = "DELETE FROM meals WHERE mealid = '$_GET[mealid]';";
   mysqli_query($conn, $sql);
 
-  header("location: savedmeals");
+  header("location: savedmeals.pyp");
 }
 ?>
 
@@ -27,18 +27,21 @@ if (!isset($_SESSION['userid'])) {
 <body>
   <header>
     <a href='../'><button>BACK</button></a>
-    <a href="../dinnergenerator"><button>HOME</button></a>
+    <a href="index.php"><button>HOME</button></a>
     <?php
     if (isset($_SESSION["userid"])) {
-      echo "<a href = 'savedmeals'><button>SAVED MEALS</button></a>";
-      echo "<a href = 'profile'><button>PROFILE</button></a>";
-      echo "<a href = 'logout'><button>LOG OUT</button></a>";
+      echo "<a href = 'savedmeals.pyp'><button>SAVED MEALS</button></a>";
+      echo "<a href = 'profile.php'><button>PROFILE</button></a>";
+      if ($_SESSION["username"] == "admin") {
+        echo "<a href = 'controlpanel.php'><button>CONTROL PANEL</button></a>";
+      }
+      echo "<a href = 'logout.php'><button>LOG OUT</button></a>";
     } else {
-      echo "<a href = 'login'><button>LOGIN</button></a>";
-      echo "<a href = 'signup'><button>REGISTER</button></a>";
+      echo "<a href = 'login.php'><button>LOGIN</button></a>";
+      echo "<a href = 'signup.php'><button>REGISTER</button></a>";
     }
     ?>
-    <a href="privacypolicy"><button>PRIVACY POLICY</button></a>
+    <a href="privacypolicy.php"><button>PRIVACY POLICY</button></a>
   </header>
   <br>
   <br>
@@ -62,7 +65,7 @@ if (!isset($_SESSION['userid'])) {
           <td><?php echo $row["carbs"]; ?></td>
           <td><?php echo $row["meat"]; ?></td>
           <td><?php echo $row["vegetable"]; ?></td>
-          <td><?php echo "<a href = 'savedmeals?mealid=$row[mealid]'><button> DELETE </button></a>" ?></td>
+          <td><?php echo "<a href = 'savedmeals.pyp?mealid=$row[mealid]'><button> DELETE </button></a>" ?></td>
         </tr>
     <?php
       }

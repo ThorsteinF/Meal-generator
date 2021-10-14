@@ -2,13 +2,13 @@
 session_start();
 
 if (!isset($_SESSION['userid'])) {
-  header("location: login.php");
+  header("location: login");
 } else if (isset($_GET["userid"])) {
   include_once "scripts/connect.php";
 
   $sql = "DELETE FROM users WHERE userid = '$_GET[userid]';";
   mysqli_query($conn, $sql);
-  header("location: logout.php");
+  header("location: logout");
 }
 ?>
 
@@ -26,21 +26,18 @@ if (!isset($_SESSION['userid'])) {
 <body>
   <header>
     <a href='../'><button>BACK</button></a>
-    <a href="index.php"><button>HOME</button></a>
+    <a href="../dinnergenerator"><button>HOME</button></a>
     <?php
     if (isset($_SESSION["userid"])) {
-      echo "<a href = 'savedmeals.php'><button>Saved meals</button></a>";
-      echo "<a href = 'profile.php'><button>PROFILE</button></a>";
-      if ($_SESSION["username"] == "admin") {
-        echo "<a href = 'controlpanel.php'><button>CONTROL PANEL</button></a>";
-      }
-      echo "<a href = 'logout.php'><button>LOG OUT</button></a>";
+      echo "<a href = 'savedmeals'><button>Saved meals</button></a>";
+      echo "<a href = 'profile'><button>PROFILE</button></a>";
+      echo "<a href = 'logout'><button>LOG OUT</button></a>";
     } else {
-      echo "<a href = 'login.php'><button>LOGIN</button></a>";
-      echo "<a href = 'signup.php'><button>REGISTER</button></a>";
+      echo "<a href = 'login'><button>LOGIN</button></a>";
+      echo "<a href = 'signup'><button>REGISTER</button></a>";
     }
     ?>
-    <a href="privacypolicy.php"><button>PRIVACY POLICY</button></a>
+    <a href="privacypolicy"><button>PRIVACY POLICY</button></a>
   </header>
   <br>
   <br>
@@ -56,15 +53,15 @@ if (!isset($_SESSION['userid'])) {
       <tr>
         <th> EMAIL </th>
         <td><?php echo $_SESSION["email"]; ?></td>
-        <?php echo "<td><a href = 'changeemail.php'><button> CHANGE </button> </a></td>" ?>
+        <?php echo "<td><a href = 'changeemail'><button> CHANGE </button> </a></td>" ?>
       </tr>
       <th> USERNAME </th>
       <td><?php echo $_SESSION["username"]; ?></td>
-      <?php echo "<td><a href = 'changeusername.php'><button> CHANGE </button> </a></td>" ?>
+      <?php echo "<td><a href = 'changeusername'><button> CHANGE </button> </a></td>" ?>
       <tr>
         <th>PASSWORD</th>
         <td></td>
-        <?php echo "<td><a href = 'changepwd.php'><button> CHANGE </button> </a></td>" ?>
+        <?php echo "<td><a href = 'changepwd'><button> CHANGE </button> </a></td>" ?>
       </tr>
       <tr>
         <th>Created</th>
@@ -72,7 +69,7 @@ if (!isset($_SESSION['userid'])) {
             echo mysqli_fetch_assoc(mysqli_query($conn, "SELECT created FROM users WHERE userid = '$_SESSION[userid]';"))["created"]; ?></td>
       <tr>
     </table>
-    <?php echo "<a href = 'profile.php?userid=$_SESSION[userid]'><button style = 'margin-top: 100px;'> DELETE ACCOUNT </button></a>" ?>
+    <?php echo "<a href = 'profile?userid=$_SESSION[userid]'><button style = 'margin-top: 100px;'> DELETE ACCOUNT </button></a>" ?>
   </div>
 </body>
 

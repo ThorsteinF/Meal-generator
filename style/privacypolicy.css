@@ -1,13 +1,12 @@
 @import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap");
-body {
-  font-family: "Bebas Neue", "sans-serif";
-  display: flex;
-  justify-content: center;
+* {
+  margin: 0;
+  padding: 0;
 }
 
-header {
-  display: flex;
-  justify-content: center;
+body {
+  margin-top: 10px;
+  font-family: "Bebas Neue", "sans-serif";
 }
 
 button {
@@ -18,6 +17,7 @@ button {
   border: 3px solid black;
   background-color: transparent;
   transition: 0.5s ease;
+  vertical-align: middle;
 }
 
 button:hover {
@@ -29,7 +29,11 @@ button:hover {
 }
 
 text {
+  padding-bottom: 30px;
+  display: flex;
+  flex-direction: column;
   width: 80%;
+  margin: auto;
 }
 
 h1 {
@@ -49,7 +53,46 @@ li {
   font-size: 24px;
 }
 
+h2 {
+  font-size: 36px;
+}
+
+#c {
+  margin-top: 60px;
+}
+
+header {
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+header a {
+  font-size: 24px;
+  padding: 5px;
+  margin-right: 5px;
+}
+
+table {
+  border-collapse: collapse;
+  border: 3px solid black;
+  margin: auto;
+  font-size: 24px;
+}
+
+table th {
+  border: 3px solid black;
+  padding: 10px;
+}
+
+table td {
+  border: 3px solid black;
+  padding: 10px;
+}
+
 @media screen and (max-width: 550px) {
+  body p {
+    font-size: 20px;
+  }
   header {
     display: flex;
     flex-wrap: wrap;
@@ -60,10 +103,35 @@ li {
     flex-basis: auto;
     font-size: 20px;
   }
-  header button {
-    min-width: 150px;
+  header a {
+    min-width: 0;
+    margin: 0;
+  }
+  img {
+    width: 250px;
+  }
+  h2 {
+    font-size: 24px;
   }
   #c {
     font-size: 16px;
+  }
+  table {
+    border: 2px solid black;
+    font-size: 16px;
+  }
+  table th {
+    border: 2px solid black;
+    padding: 12px;
+  }
+  table td {
+    border: 2px solid black;
+    padding: 12px;
+  }
+  table button {
+    font-size: 10px;
+    min-width: 40px;
+    padding: 5px;
+    border: 2px solid black;
   }
 }

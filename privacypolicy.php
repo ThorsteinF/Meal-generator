@@ -19,14 +19,25 @@ if (isset($_POST["submit"])) {
 </head>
 
 <body>
+<header>
+  <a href='../'><button>BACK</button></a>
+  <a href="../dinnergenerator"><button>HOME</button></a>
+  <?php
+  if (isset($_SESSION["userid"])) {
+    echo "<a href = 'savedmeals'><button>Saved meals</button></a>";
+    echo "<a href = 'profile'><button>PROFILE</button></a>";
+    echo "<a href = 'logout'><button>LOG OUT</button></a>";
+  } else {
+    echo "<a href = 'login'><button>LOGIN</button></a>";
+    echo "<a href = 'signup'><button>REGISTER</button></a>";
+  }
+  ?>
+  <a href="privacypolicy"><button>PRIVACY POLICY</button></a>
+</header>
   <text>
-    <header>
-      <button onclick="history.back()">BACK</button>
-    </header>
-
     <h1>Privacy Policy for Dinner Generator Generator</h1>
 
-    <p>At Dinner Generator Generator, accessible from <a href="https://www.thorsteinsoftware.com/projects/dinnergenerator">https://www.thorsteinsoftware.com/projects/dinnergenerator/a>, one of our main priorities is the privacy of our visitors. This Privacy Policy document contains types of information that is collected and recorded by Dinner Generator Generator and how we use it.</p>
+    <p>At Dinner Generator Generator, accessible from <a href="https://www.thorsteinsoftware.com/projects/dinnergenerator">https://www.thorsteinsoftware.com/projects/dinnergenerator</a>, one of our main priorities is the privacy of our visitors. This Privacy Policy document contains types of information that is collected and recorded by Dinner Generator Generator and how we use it.</p>
 
     <p>If you have additional questions or require more information about our Privacy Policy, do not hesitate to contact us.</p>
 

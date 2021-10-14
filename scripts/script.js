@@ -15,14 +15,14 @@ document.querySelector("#generate").addEventListener("click", function () {
 });
 
 var carbsList = [
-	"Basmati carbs",
-	"Black carbs",
-	"Jasmin carbs",
-	"Brown carbs",
-	"Red cargo carbs",
-	"Sticky carbs",
-	"Long grain white carbs",
-	"Medium grain white carbs",
+	"Basmati rice",
+	"Black rice",
+	"Jasmin rice",
+	"Brown rice",
+	"Red cargo rice",
+	"Sticky rice",
+	"Long grain white rice",
+	"Medium grain white rice",
 	"Calrose",
 ];
 

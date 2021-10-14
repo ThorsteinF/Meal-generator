@@ -1,5 +1,4 @@
 <?php
-/*
 $serverName = "censored";
 $dBUsername = "censored";
 $dBPassword = "censored";

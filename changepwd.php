@@ -2,7 +2,7 @@
 session_start();
 
 if (!isset($_SESSION["userid"])) {
-  header("index.php");
+  header("../dinnergenerator");
 } else if (isset($_POST["submit"])) {
   include_once "scripts/connect.php";
   include_once "scripts/functions.php";
@@ -11,18 +11,18 @@ if (!isset($_SESSION["userid"])) {
   $pwdrepeat = $_POST["pwdrepeat"];
 
   if (!emptyInputLogin($pwd, $pwdrepeat)) {
-    header("location: changepwd.php?error=emptyinput");
+    header("location: changepwd?error=emptyinput");
   } else if (!pwdMatch($pwd, $pwdrepeat)) {
-    header("location: changepwd.php?error=pwdnotmatch");
+    header("location: changepwd?error=pwdnotmatch");
   } else if (strlen($pwd) <= 7) {
-    header("location: changepwd.php?error=pwdtooshort");
+    header("location: changepwd?error=pwdtooshort");
   }
 
   $hashedPwd = password_hash($pwd, PASSWORD_DEFAULT);
   $sql = "UPDATE users SET pwd = '$hashedPwd' WHERE userid = '$_SESSION[userid]';";
   mysqli_query($conn, $sql);
 
-  header("location: profile.php");
+  header("location: profile");
 }
 ?>
 
@@ -40,21 +40,18 @@ if (!isset($_SESSION["userid"])) {
 <body>
   <header>
     <a href='../'><button>BACK</button></a>
-    <a href="index.php"><button>HOME</button></a>
+    <a href="../dinnergenerator"><button>HOME</button></a>
     <?php
     if (isset($_SESSION["userid"])) {
-      echo "<a href = 'savedmeals.php'><button>SAVED MEALS</button></a>";
-      echo "<a href = 'profile.php'><button>PROFILE</button></a>";
-      if ($_SESSION["username"] == "admin") {
-        echo "<a href = 'controlpanel.php'><button>CONTROL PANEL</button></a>";
-      }
-      echo "<a href = 'logout.php'><button>LOG OUT</button></a>";
+      echo "<a href = 'savedmeals'><button>SAVED MEALS</button></a>";
+      echo "<a href = 'profile'><button>PROFILE</button></a>";
+      echo "<a href = 'logout'><button>LOG OUT</button></a>";
     } else {
-      echo "<a href = 'login.php'><button>LOGIN</button></a>";
-      echo "<a href = 'signup.php'><button>REGISTER</button></a>";
+      echo "<a href = 'login'><button>LOGIN</button></a>";
+      echo "<a href = 'signup'><button>REGISTER</button></a>";
     }
     ?>
-    <a href="privacypolicy.php"><button>PRIVACY POLICY</button></a>
+    <a href="privacypolicy"><button>PRIVACY POLICY</button></a>
   </header>
   <br>
   <br>
@@ -63,7 +60,7 @@ if (!isset($_SESSION["userid"])) {
   </div>
 
   <div id="output">
-    <form action="changepwd.php" method="POST">
+    <form action="changepwd" method="POST">
       <p> Password must be at least 8 characters long </p>
       <input name="pwd" type="password" placeholder="Password">
       <br>
